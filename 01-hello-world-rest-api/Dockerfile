@@ -1,3 +1,7 @@
 FROM openjdk:8-jdk-alpine
-ADD target/hello-world-rest-api.jar hello-world-rest-api.jar
-ENTRYPOINT ["sh", "-c", "java -jar /hello-world-rest-api.jar"]
+# Just for information to outside world
+EXPOSE 8080
+#ADD target/hello-world-rest-api.jar hello-world-rest-api.jar
+# Create a generic docker file
+ADD target/*.jar app.jar
+ENTRYPOINT ["sh", "-c", "java -jar /app.jar"]
